@@ -3,7 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\VinylMixRepository;
-use Doctrine\DBAL\Types\Types; 
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: VinylMixRepository::class)]
@@ -27,10 +27,15 @@ class VinylMix
     private ?string $genre = null;
 
     #[ORM\Column]
-    private ?\DateTimeImmutable $createdAt = null;
+    private ?\DateTimeImmutable $createdAt ;
 
     #[ORM\Column]
-    private ?int $votes = null;
+    private ?int $votes = 0;
+    
+
+    public function __construct() {
+    $this->createdAt = new \DateTimeImmutable();
+}
 
     public function getId(): ?int
     {
